@@ -4,6 +4,8 @@ const diceButtonElement = document.querySelector('#dice-btn');
 const playerPiecesElements = {
     P1: document.querySelectorAll('[player-id="P1"].player-piece'),
     P2: document.querySelectorAll('[player-id="P2"].player-piece'),
+    P3: document.querySelectorAll('[player-id="P3"].player-piece')
+    // P4: document.querySelectorAll('[player-id="P2"].player-piece'),
 }
 
 export class UI {
@@ -16,6 +18,7 @@ export class UI {
     }
 
     static listenPieceClick(callback) {
+
         document.querySelector('.player-pieces').addEventListener('click', callback)
     }
 
@@ -43,9 +46,9 @@ export class UI {
             console.error('index out of bound!');
             return;
         }
+        console.log(index)
         
         const player = PLAYERS[index];
-
         // Display player ID
         document.querySelector('.active-player span').innerText = player;
 

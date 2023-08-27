@@ -4,7 +4,8 @@ import { UI } from './UI.js';
 export class Ludo {
     currentPositions = {
         P1: [],
-        P2: []
+        P2: [],
+        P3: [],
     }
 
     _diceValue;
@@ -72,7 +73,9 @@ export class Ludo {
     }
 
     checkForEligiblePieces() {
+        console.log(PLAYERS)
         const player = PLAYERS[this.turn];
+        console.log(player)
         // eligible pieces of given player
         const eligiblePieces = this.getEligiblePieces(player);
         if(eligiblePieces.length) {
@@ -84,7 +87,16 @@ export class Ludo {
     }
 
     incrementTurn() {
-        this.turn = this.turn === 0 ? 1 : 0;
+        if(this.turn===0){
+            this.turn=1;
+        }
+        else if(this.turn===1){
+            this.turn=2;
+
+        }
+        else if(this.turn==2){
+            this.turn=0;
+        }
         this.state = STATE.DICE_NOT_ROLLED;
     }
 
@@ -150,7 +162,7 @@ export class Ludo {
     }
 
     handlePieceClick(player, piece) {
-        console.log(player, piece);
+        
         const currentPosition = this.currentPositions[player][piece];
         
         if(BASE_POSITIONS[player].includes(currentPosition)) {
@@ -198,8 +210,9 @@ export class Ludo {
 
     checkForKill(player, piece) {
         const currentPosition = this.currentPositions[player][piece];
-        const opponent = player === 'P1' ? 'P2' : 'P1';
-
+        
+        const opponent =player === 'P1' ? 'P2' : 'P1';
+        console.log(opponent,player)
         let kill = false;
 
         [0, 1, 2, 3].forEach(piece => {

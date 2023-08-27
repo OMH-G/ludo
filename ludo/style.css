@@ -59,6 +59,12 @@
 [player-id="P2"].player-piece {
     background-color: #00b550;
 }
+[player-id="P3"].player-piece {
+    background-color: red;
+}
+[player-id="P4"].player-piece {
+    background-color: #00b550;
+}
 
 .player-base {
     width: 40%;
@@ -77,6 +83,11 @@
     top: 0;
     right: 0;
     border-color: #049645;
+}
+.player-bases [player-id="P3"].player-base {
+    bottom: 0;
+    right: 0;
+    border-color: red;
 }
 
 .player-base.highlight {
